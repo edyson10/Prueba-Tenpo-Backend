@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: tenpo_db
+    environment:
+      POSTGRES_DB: tenpo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - tenpo_pg:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: tenpo_pgadmin
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@tenpo.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    volumes:
+      - tenpo_pgadmin:/var/lib/pgadmin
+
+  api:
+    build: .
+    container_name: tenpo_api
+    depends_on:
+      - db
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/tenpo
+      DB_USER: postgres
+      DB_PASS: 1234
+      PERCENTAGE_BASE_URL: http://api:8080/mock
+      PERCENTAGE_ENDPOINT: /percentage
+    ports:
+      - "8080:8080"
+
+volumes:
+  tenpo_pg:
+  tenpo_pgadmin:

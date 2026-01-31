@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/tenpo}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:1234}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+percentage:
+  # En local por defecto pega al mock interno:
+  base-url: ${PERCENTAGE_BASE_URL:http://localhost:8080/mock}
+  endpoint: ${PERCENTAGE_ENDPOINT:/percentage}
+  connect-timeout-ms: 1500
+  read-timeout-ms: 1500
+
+rate-limit:
+  rpm: 3
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+    api-docs:
+      path: /v3/api-docs
