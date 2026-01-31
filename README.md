@@ -13,7 +13,7 @@ El proyecto está construido usando arquitectura MVC, con separación clara de r
 
 # 🚀 Tecnologías utilizadas
 
-1. Java 17
+1. Java 21
 2. Spring Boot 3.x
 3. Spring MVC
 4. Spring Data JPA
