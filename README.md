@@ -222,6 +222,19 @@ http://localhost:8080/v3/api-docs
 docker compose up --build
 ```
 
+## 🐳 Docker Hub
+
+La imagen del proyecto está publicada en Docker Hub:
+
+https://hub.docker.com/r/edysonleal03/prueba-tenpo-backend
+
+### Ejecutar la aplicación
+
+```bash
+docker pull edysonleal03/prueba-tenpo-backend:latest
+docker run -p 8080:8080 edysonleal03/prueba-tenpo-backend:latest
+```
+
 ### Servicios:
 
 API: http://localhost:8080
