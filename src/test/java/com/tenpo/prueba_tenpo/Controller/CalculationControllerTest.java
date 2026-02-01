@@ -5,6 +5,7 @@ import com.tenpo.prueba_tenpo.DTO.CalculationRequestDto;
 import com.tenpo.prueba_tenpo.DTO.CalculationResponseDto;
 import com.tenpo.prueba_tenpo.Exception.RestExceptionHandler;
 import com.tenpo.prueba_tenpo.Service.CalculationService;
+import com.tenpo.prueba_tenpo.Service.CallHistoryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -30,6 +31,8 @@ class CalculationControllerTest {
     @MockitoBean
     CalculationService calculationService;
 
+    @MockitoBean
+    CallHistoryService callHistoryService;
 
     @Test
     void calculate_ok_200() throws Exception {
